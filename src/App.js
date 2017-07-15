@@ -11,11 +11,14 @@ class App extends Component {
       alignItems: "flex-start"
     };
     const style = {
-      width: "600px"
+      width: "400px"
     };
     return (
-      <div style={wrapper}>
-        <img style={style} src={world_map} alt="world map" />
+      <div className="App">
+        <h1>Meteorites</h1>
+        <div style={wrapper}>
+          <img style={style} src={world_map} alt="world map" />
+        </div>
       </div>
     );
   }
