@@ -11,7 +11,7 @@ class App extends Component {
       alignItems: "flex-start"
     };
     const style = {
-      width: "400px"
+      width: "600px"
     };
     return (
       <div className="App">
