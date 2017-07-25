@@ -1,8 +1,12 @@
+// import data from './meteorites.testdata.json';
 
 const getData = () => {
+  // return new Promise( (resolve, reject) => {
+  //   resolve( data);
+  // });
   return fetch( "https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/meteorite-strike-data.json")
-  .then( checkStatus)
-  .then( parseJSON);
+    .then( checkStatus)
+    .then( parseJSON);
 };
 
 function checkStatus(response) {
