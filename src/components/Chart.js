@@ -24,14 +24,19 @@ export default class Chart extends React.Component {
       .range( [box[1], box[3]-box[1]]);
     const yScale = d3.scaleLinear()
       .domain( [90,-90])
-      .range( [box[0]+20, box[2]-box[0]]);
+      .range( [box[0], box[2]-box[0]]);
     let data = this.props.data;
     if( data.length === 0) data = this.props.calibration;
+    const min = d3.min( data, (d) => d.mass);
+    const max = d3.max( data, (d) => d.mass);
+    const mScale = d3.scaleLinear()
+      .domain( [min, max])
+      .range( [1,10]);
     const meteorites = data.map( (d,i) => {
       const style={
         cx: xScale( d.lat),
         cy: yScale( d.lng),
-        r:2,
+        r: mScale( d.mass),
         fill: 'black'
       };
       return (
