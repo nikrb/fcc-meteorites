@@ -15,6 +15,7 @@ class App extends Component {
     {"place": " east antarctica",lng:-72.216494, lat:167.737049, mass:1}
   ];
   componentWillMount = () => {
+    console.log( "fetch data");
     Actions.getData()
     .then( (response) => {
       const valid = response.features.filter( (d) => {
@@ -26,14 +27,17 @@ class App extends Component {
   render() {
     const data = this.state.features.map( (d) => {
       return { lat: d.geometry.coordinates[0], lng: d.geometry.coordinates[1],
-        mass: parseFloat( d.properties.mass) };
+        mass: parseFloat( d.properties.mass),
+        reclass: d.properties.recclass,
+        name: d.properties.name,
+        year: d.properties.year?d.properties.year.split("-")[0]:"?"};
     });
     // box top,left,bottom,right
-    const box = [40,30,420,575];
+    const box = [60,15,430,560];
     return (
       <div className="App">
         <h1>Meteorites</h1>
-        <Chart width={600} data={data} box={box} calibration={this.calibration} />
+        <Chart width={600} height={500} data={data} box={box} calibration={this.calibration} />
       </div>
     );
   };
