@@ -33,7 +33,7 @@ class App extends Component {
         year: d.properties.year?d.properties.year.split("-")[0]:"?"};
     });
     // box top,left,bottom,right
-    const box = [60,15,430,560];
+    const box = [60,15,420,570];
     return (
       <div className="App">
         <h1>Meteorites</h1>

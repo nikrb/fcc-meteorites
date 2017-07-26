@@ -51,7 +51,7 @@ export default class Chart extends React.Component {
     if( data.length === 0) data = this.props.calibration;
     const min = d3.min( data, (d) => d.mass);
     const max = d3.max( data, (d) => d.mass);
-    const mScale = d3.scaleLinear()
+    const mScale = d3.scaleSqrt()
       .domain( [min, max])
       .range( [1,10]);
     const meteorites = data.map( (d,i) => {
